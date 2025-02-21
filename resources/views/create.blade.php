@@ -22,7 +22,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <form action="{{ route('user.store')}}" method="post">
+            <form action="{{ route('admin.user.store')}}" method="post">
                 @csrf
                 <div class="row">
                     <!-- left column -->
