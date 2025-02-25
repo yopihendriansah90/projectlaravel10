@@ -16,10 +16,15 @@ class HomeController extends Controller
         return view('dashboard');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $data = User::get();
-        return view('index', compact('data'));
+        $data = new User;
+        if ($request->get('search')) {
+            $data = $data->where('name', 'like', '%' . $request->get('search') . '%')
+                ->orWhere('email', 'like', '%' . $request->get('search') . '%');
+        }
+        $data = $data->get();
+        return view('index', compact('data', 'request'));
     }
 
     public function create()
