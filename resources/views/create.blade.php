@@ -22,7 +22,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <form action="{{ route('admin.user.store')}}" method="post">
+            <form action="{{ route('admin.user.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <!-- left column -->
@@ -36,6 +36,13 @@
                         <!-- form start -->
                         <form>
                           <div class="card-body">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Photo Profile</label>
+                              <input type="file" name="photo" class="form-control" id="exampleInputEmail1" >
+                                @error('photo')
+                                    <small>{{ $message}}</small>
+                                @enderror
+                            </div>
                             <div class="form-group">
                               <label for="exampleInputEmail1">Email address</label>
                               <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
